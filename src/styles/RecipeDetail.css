@@ -1,0 +1,93 @@
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.recipe-title {
+  margin: 10px 0;
+  font-size: 1.8rem;
+}
+
+.recipe-info-chips {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.chip {
+  background: #f1f2f6;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: #57606f;
+}
+
+/* Стили для ингредиентов в строку */
+.ing-list-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.ing-item-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #f1f2f6;
+  padding: 8px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  font-size: 0.95rem;
+  transition: transform 0.2s;
+}
+
+.ing-item-card:hover {
+  transform: scale(1.05);
+}
+
+.ing-emoji-small {
+  font-size: 1.2rem;
+}
+
+/* Шаги приготовления */
+.steps-section {
+  margin-top: 30px;
+}
+
+.steps-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.step-item {
+  margin-bottom: 20px;
+  padding-left: 45px;
+  position: relative;
+}
+
+.step-num-circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}

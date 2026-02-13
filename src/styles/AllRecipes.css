@@ -1,0 +1,109 @@
+.all-recipes-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Поиск и фильтры */
+.filters-section {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px 0;
+  z-index: 10;
+  border-bottom: 1px solid #f1f2f6;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #dfe4ea;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar { display: none; }
+
+.cat-chip {
+  padding: 6px 15px;
+  border-radius: 20px;
+  border: 1px solid #dfe4ea;
+  background: white;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.cat-chip.active {
+  background: #ff4757;
+  color: white;
+  border-color: #ff4757;
+}
+
+/* Сетка карточек */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.recipe-card-full {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #f1f2f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card-full:hover {
+  transform: translateY(-5px);
+}
+
+.card-image-placeholder {
+  height: 140px;
+  background: linear-gradient(45deg, #ff9f43, #ff4757);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #2f3542;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #747d8c;
+}
+
+.time-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
