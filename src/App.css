@@ -58,3 +58,29 @@ main {
 .bottom-nav a.active {
   color: #2ed573;
 }
+
+.offline-banner {
+  background: #2f3542;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.offline-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
