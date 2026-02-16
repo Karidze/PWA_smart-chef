@@ -1,0 +1,76 @@
+.favorites-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.favorites-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.recipe-count {
+  color: #747d8c;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Стилизация карточки избранного */
+.favorite-card {
+  border-left: 4px solid #ffcc00; /* Золотистая полоска слева */
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.favorite-card:hover {
+  border-left-width: 8px;
+}
+
+.view-link {
+  color: #2ed573;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Стили для пустого состояния */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.empty-state h2 {
+  margin-bottom: 10px;
+  color: #2f3542;
+}
+
+.empty-state p {
+  color: #747d8c;
+  margin-bottom: 30px;
+}
+
+.browse-btn {
+  display: inline-block;
+  background: #ff4757;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+  transition: all 0.3s ease;
+}
+
+.browse-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 71, 87, 0.4);
+}

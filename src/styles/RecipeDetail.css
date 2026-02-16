@@ -67,6 +67,7 @@
 
 .steps-list {
   padding-left: 0;
+  margin-top: 15px;
   list-style: none;
 }
 
@@ -90,4 +91,44 @@
   justify-content: center;
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+/* Общие стили для кнопок в шапке */
+.back-btn, .share-btn, .fav-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: #2f3542;
+  border: 1px solid #f1f2f6;
+}
+
+.back-btn:hover, .share-btn:hover {
+  background: #f1f2f6;
+  transform: translateY(-2px);
+}
+
+/* Кнопка сохранения (Save) */
+.fav-btn {
+  background: #fff;
+  color: #ff4757;
+}
+
+.fav-btn.active {
+  background: #ff4757;
+  color: white;
+  border-color: #ff4757;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.fav-btn:hover {
+  transform: scale(1.05);
 }

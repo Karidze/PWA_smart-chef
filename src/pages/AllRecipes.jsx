@@ -55,11 +55,28 @@ const AllRecipes = () => {
               {r.category === 'Snacks' && '🥪'}
               {r.category === 'Side Dish' && '🥔'}
             </div>
+            
             <div className="card-content">
+              <div className="card-tags">
+                <span className="category-tag">{r.category}</span>
+              </div>
+              
               <h3>{r.title}</h3>
+              
+              <div className="card-ingredients-preview">
+                {r.ingredients.slice(0, 4).map((ing, index) => (
+                  <span key={index} className="mini-ing-text">
+                    {ing}{index < 3 && index < r.ingredients.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+                {r.ingredients.length > 4 && (
+                  <span className="more-count"> +{r.ingredients.length - 4} more</span>
+                )}
+              </div>
+
               <div className="card-info">
                 <span className="time-tag">⏱ {r.prepTime}</span>
-                <span>{r.category}</span>
+                {/* Кол-во айтемов удалили отсюда */}
               </div>
             </div>
           </Link>
