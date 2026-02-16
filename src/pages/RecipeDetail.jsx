@@ -39,14 +39,27 @@ const RecipeDetail = () => {
   const handleShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({
+        // Формируем текст так, чтобы ссылка была внутри строки
+        const shareData = {
           title: recipe.title,
-          text: `Check out this recipe for ${recipe.title}!`,
-          url: window.location.href,
-        });
-      } catch (err) { console.error(err); }
+          text: `Check out this recipe for ${recipe.title}!\n\n${window.location.href}`,
+        };
+
+        await navigator.share(shareData);
+      } catch (err) {
+        // Если пользователь просто закрыл окно выбора, это тоже вызовет ошибку "AbortError"
+        if (err.name !== 'AbortError') {
+          console.error('Error sharing:', err);
+        }
+      }
     } else {
-      alert("Sharing is not supported.");
+      // Фолбек: если браузер не поддерживает Share API, просто копируем в буфер
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to clipboard!");
+      } catch (err) {
+        alert("Sharing is not supported on this browser.");
+      }
     }
   };
 

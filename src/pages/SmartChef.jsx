@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { recipes, ingredientEmojis } from '../data/recipes';
-import { Link, useLocation } from 'react-router-dom'; // Добавили useLocation
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/SmartChef.css';
 
 const SmartChef = () => {
@@ -9,28 +9,28 @@ const SmartChef = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [strictMode, setStrictMode] = useState(false);
   
-  const location = useLocation(); // Слушаем URL
-
-  // НОВЫЙ ЭФФЕКТ: Ловим ингредиент из ссылки
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const searchIng = params.get('search');
-
-    if (searchIng) {
-      const ing = searchIng.toLowerCase();
-      // Добавляем в список, если его там еще нет
-      setSelected(prev => prev.includes(ing) ? prev : [...prev, ing]);
-      
-      // Чистим URL, чтобы при обновлении страницы он снова не добавлялся
-      window.history.replaceState({}, '', '/');
-    }
-  }, [location]);
+  const location = useLocation();
+  const historyRef = useRef(null);
 
   useEffect(() => {
     const viewed = JSON.parse(localStorage.getItem('viewed_history') || '[]');
     const historyRecipes = recipes.filter(r => viewed.includes(r.id));
-    setHistory(historyRecipes.reverse().slice(0, 5));
+    const sortedHistory = viewed
+      .map(id => historyRecipes.find(r => r.id === id))
+      .filter(Boolean)
+      .reverse();
+    setHistory(sortedHistory.slice(0, 10));
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const searchIng = params.get('search');
+    if (searchIng) {
+      const ing = searchIng.toLowerCase();
+      setSelected(prev => prev.includes(ing) ? prev : [...prev, ing]);
+      window.history.replaceState({}, '', '/');
+    }
+  }, [location]);
 
   const allIngredients = [...new Set(recipes.flatMap(r => r.ingredients))].sort();
 
@@ -44,6 +44,16 @@ const SmartChef = () => {
       prev.includes(ing) ? prev.filter(i => i !== ing) : [...prev, ing]
     );
     setSearchTerm('');
+  };
+
+  const scrollHistory = (direction) => {
+    if (historyRef.current) {
+      const { scrollLeft, clientWidth } = historyRef.current;
+      const scrollTo = direction === 'left' 
+        ? scrollLeft - clientWidth * 0.7 
+        : scrollLeft + clientWidth * 0.7;
+      historyRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
   };
 
   const possibleRecipes = selected.length > 0 
@@ -79,8 +89,8 @@ const SmartChef = () => {
             checked={strictMode} 
             onChange={() => setStrictMode(!strictMode)} 
           />
-          <span className="checkmark"></span>
-          Strict match (must have ALL selected)
+          <div className="checkmark"></div>
+          <span className="checkbox-label-text">Strict match (must have ALL selected)</span>
         </label>
       </div>
 
@@ -112,12 +122,14 @@ const SmartChef = () => {
       <section>
         <h2>{strictMode ? "Perfect Matches" : "Suggested Recipes"} ({possibleRecipes.length})</h2>
         {possibleRecipes.length > 0 ? (
-          <div className="recipe-list-horizontal">
+          <div className="recipe-grid">
             {possibleRecipes.map(r => (
               <Link to={`/recipe/${r.id}`} key={r.id} className="recipe-card-mini">
-                <h3>{r.title}</h3>
-                <p>⏱ {r.prepTime} • {r.category}</p>
-                <span className="match-badge">{strictMode ? "Full Match" : "Partial Match"}</span>
+                <div>
+                  <h3>{r.title}</h3>
+                  <p>⏱ {r.prepTime} • {r.category}</p>
+                </div>
+                {/* Убрали match-badge отсюда */}
               </Link>
             ))}
           </div>
@@ -129,13 +141,22 @@ const SmartChef = () => {
       </section>
 
       {history.length > 0 && (
-        <section>
-          <h2>Recently Viewed</h2>
-          <div className="recipe-list-horizontal">
+        <section className="history-section">
+          {/* Центрированный заголовок со стрелками по бокам */}
+          <div className="history-header-navigation">
+            <button className="control-btn" onClick={() => scrollHistory('left')}>←</button>
+            <h2>Recently Viewed 🕒</h2>
+            <button className="control-btn" onClick={() => scrollHistory('right')}>→</button>
+          </div>
+          
+          <div className="history-slider" ref={historyRef}>
             {history.map(r => (
               <Link to={`/recipe/${r.id}`} key={r.id} className="recipe-card-mini recently-viewed-card">
-                <h3>{r.title}</h3>
-                <p>{r.category}</p>
+                <div className="card-icon">🍲</div>
+                <div className="card-content">
+                  <h3>{r.title}</h3>
+                  <p>{r.category}</p>
+                </div>
               </Link>
             ))}
           </div>

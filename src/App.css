@@ -1,141 +1,60 @@
-.page {
-  padding: 20px;
-  padding-bottom: 80px; /* Чтобы контент не перекрывался меню */
+/* Сброс базовых отступов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.ingredients-grid {
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8f9fa; /* Общий фон для всего приложения */
+  color: #2f3542;
+}
+
+/* Контейнер на всю ширину */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
 }
 
-button {
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
+main {
+  flex: 1;
+  width: 100%;
+  /* Убираем любые центрирования здесь, за это отвечают сами страницы */
 }
 
-button.active {
-  background: #4CAF50;
-  color: white;
-  border-color: #4CAF50;
-}
-
-.recipe-card {
-  border: 1px solid #eee;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
+/* Нижнее меню */
 .bottom-nav {
   position: fixed;
   bottom: 0;
+  left: 0; /* Важно: от края до края */
+  right: 0;
   width: 100%;
-  height: 65px;
-  background: #fff;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* Эффект стекла */
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #eee;
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom); /* Поддержка iPhone с челкой */
 }
 
-.recipe-card-link {
+.bottom-nav a {
   text-decoration: none;
-  color: inherit;
-  display: block;
-  margin-bottom: 15px;
-}
-
-.card-meta {
-  display: flex;
-  gap: 15px;
-  font-size: 0.9rem;
-  color: #666;
-  margin: 5px 0;
-}
-
-.tap-hint {
-  font-size: 0.8rem;
-  color: #4CAF50;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.detail-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.recipe-info-chips {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.chip {
-  background: #f0f0f0;
-  padding: 5px 12px;
-  border-radius: 15px;
+  color: #747d8c;
   font-size: 0.85rem;
-}
-
-.steps-list {
-  padding-left: 0;
-  list-style: none;
-}
-
-.steps-list li {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border-left: 4px solid #4CAF50;
-}
-
-.step-num {
-  font-weight: bold;
-  color: #4CAF50;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.header-actions {
+  font-weight: 500;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.fav-btn {
-  background: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 8px 15px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.fav-btn.active {
-  background: #ffecb3;
-  border-color: #ffc107;
-  color: #ffa000;
-}
-
-.empty-state {
-  text-align: center;
-  margin-top: 50px;
-  color: #666;
-}
-
-.browse-link {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 25px;
+/* Активная ссылка в меню */
+.bottom-nav a.active {
+  color: #2ed573;
 }

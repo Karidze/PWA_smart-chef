@@ -1,218 +1,381 @@
+:root {
+  --primary: #2ed573;
+  --primary-dark: #26af5f;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-main: #2f3542;
+  --text-muted: #747d8c;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  --radius: 16px;
+}
+
 .page {
-  max-width: 600px;
+  max-width: 1300px;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 80px 0 100px; /* Больше отступа сверху для солидности */
 }
 
-h1 { font-size: 1.8rem; margin-bottom: 10px; }
-h2 { font-size: 1.3rem; margin: 25px 0 15px; color: #333; }
-
-/* Сетка ингредиентов */
-.ingredients-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+h1 { 
+  font-size: 2.5rem; 
+  font-weight: 800;
+  text-align: center;
   margin-bottom: 30px;
+  color: var(--text-main);
 }
 
-.ing-button {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid #dfe4ea;
-  background: #f1f2f6;
-  color: #2f3542;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.ing-button.active {
-  background: #2ed573;
-  border-color: #2ed573;
-  color: white;
-  box-shadow: 0 4px 10px rgba(46, 213, 115, 0.3);
-}
-
-/* Список карточек */
-.recipe-list-horizontal {
+h2 { 
+  font-size: 1.5rem; 
+  margin: 40px 0 20px; 
   display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 10px 5px;
-  scrollbar-width: none; /* Скрываем скроллбар в Firefox */
+  align-items: center;
+  gap: 10px;
 }
 
-.recipe-list-horizontal::-webkit-scrollbar { display: none; } /* Скрываем скролл в Chrome/Safari */
-
-.recipe-card-mini {
-  min-width: 200px;
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border: 1px solid #f1f2f6;
-  text-decoration: none;
-  color: inherit;
-}
-
-.recipe-card-mini h3 { margin: 0 0 8px; font-size: 1rem; }
-.recipe-card-mini p { margin: 0; font-size: 0.8rem; color: #747d8c; }
-
-.match-badge {
-  display: inline-block;
-  background: #e8f5e9;
-  color: #2e7d32;
-  padding: 2px 8px;
-  border-radius: 5px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Поиск */
+/* Контейнер поиска на всю ширину */
 .search-container {
-  margin: 15px 0;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  position: relative;
 }
 
 .ing-search-input {
   width: 100%;
-  padding: 12px 20px;
-  border-radius: 25px;
-  border: 2px solid #f1f2f6;
-  font-size: 1rem;
+  padding: 16px 25px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  font-size: 1.1rem;
   outline: none;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .ing-search-input:focus {
-  border-color: #2ed573;
-}
-
-/* Горизонтальный список ингредиентов */
-.ingredients-horizontal {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
-  white-space: nowrap;
-  scrollbar-width: none;
-}
-
-.ingredients-horizontal::-webkit-scrollbar {
-  display: none;
-}
-
-/* Результаты поиска ингредиентов (чипсы) */
-.search-results-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.divider {
-  border: 0;
-  border-top: 1px solid #f1f2f6;
-  margin: 25px 0;
-}
-
-.section-label {
-  font-size: 0.85rem;
-  color: #747d8c;
-  margin-bottom: 5px;
-}
-
-.hint-text {
-  text-align: center;
-  color: #a4b0be;
-  margin-top: 40px;
-  font-style: italic;
-}
-
-.recently-viewed-card {
-  opacity: 0.9;
-  border-left: 3px solid #ccc;
-  background: #fdfdfd;
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .filter-options {
-  margin: 10px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Контейнер для опций фильтрации */
+.filter-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .checkbox-container {
   display: flex;
   align-items: center;
-  position: relative;
-  padding-left: 35px;
+  gap: 12px;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #2f3542;
-  user-select: none;
+  background: var(--card-bg);
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  font-weight: 500;
+  color: var(--text-main);
 }
 
+.checkbox-container:hover {
+  transform: scale(1.02);
+  border-color: var(--primary);
+}
+
+/* Прячем дефолтный чекбокс */
 .checkbox-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 22px;
-  width: 22px;
-  background-color: #f1f2f6;
-  border-radius: 6px;
-  border: 2px solid #dfe4ea;
-}
-
-.checkbox-container:hover input ~ .checkmark {
-  background-color: #dfe4ea;
-}
-
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #2ed573;
-  border-color: #2ed573;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
   display: none;
 }
 
-.checkbox-container input:checked ~ .checkmark:after {
-  display: block;
+/* Кастомный тумблер */
+.checkmark {
+  width: 44px;
+  height: 24px;
+  background: #dfe4ea;
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.checkbox-container .checkmark:after {
-  left: 7px;
-  top: 3px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
+.checkmark::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.no-recipes-text {
-  color: #a4b0be;
+/* Состояние "Включено" */
+.checkbox-container input:checked ~ .checkmark {
+  background: var(--primary);
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+  left: 22px; /* Сдвигаем кружок вправо */
+}
+
+/* Текст рядом с тумблером */
+.checkbox-label-text {
+  font-size: 0.95rem;
+}
+
+/* Сетка результатов - ГЛАВНОЕ ИЗМЕНЕНИЕ */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.recipe-card-mini {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.03);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-card-mini:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(46, 213, 115, 0.15);
+  border-color: var(--primary);
+}
+
+.recipe-card-mini h3 { 
+  margin: 0 0 10px; 
+  font-size: 1.2rem; 
+  line-height: 1.3;
+}
+
+.recipe-card-mini p { 
+  color: var(--text-muted); 
   font-size: 0.9rem;
-  margin-top: 10px;
 }
 
-.ing-emoji {
-  margin-right: 8px;
-  font-size: 1.2rem;
-  vertical-align: middle;
+/* Выбранные ингредиенты */
+.ingredients-horizontal {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку на ПК */
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .ing-button {
   display: flex;
   align-items: center;
-  /* остальные твои стили */
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #dfe4ea;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ing-button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Секция истории */
+.history-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px dashed #dfe4ea;
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  
+  .recipe-grid {
+    display: flex;
+    overflow-x: auto; /* Возвращаем горизонтальный скролл на мобилках */
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .recipe-card-mini {
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  .ingredients-horizontal {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}
+
+/* Результаты поиска ингредиентов — теперь в строку */
+.search-results-chips {
+  display: flex;
+  flex-wrap: wrap;       /* Позволяет переходить на новую строку, если места нет */
+  justify-content: center; /* Центрируем кнопки под строкой поиска */
+  gap: 10px;
+  margin: 15px auto;
+  max-width: 800px;      /* Чтобы облако тегов не расползалось слишком широко */
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Шапка секции с кнопками */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 20px;
+}
+
+.slider-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
+
+/* Слайдер истории */
+.history-slider {
+  display: flex !important; /* Перебиваем грид для этой секции */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px 5px 25px;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.history-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Стилизация карточки истории "под еду" */
+.recently-viewed-card {
+  min-width: 240px;
+  max-width: 240px;
+  background: #fffaf0; /* Теплый кремовый оттенок */
+  border: 1px solid #fcebb6;
+  border-radius: 20px;
+  display: flex !important;
+  flex-direction: row !important; /* Иконка слева, текст справа */
+  align-items: center;
+  gap: 15px;
+  padding: 15px !important;
+}
+
+.recently-viewed-card:hover {
+  background: #ffffff;
+  border-color: var(--primary);
+}
+
+.card-icon {
+  font-size: 2rem;
+  background: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.1);
+}
+
+.card-content h3 {
+  font-size: 0.95rem !important;
+  margin: 0 !important;
+  color: #5d4037; /* Кофейный цвет текста */
+}
+
+.card-content p {
+  font-size: 0.8rem !important;
+  color: #8d6e63 !important;
+}
+
+/* Декоративная линия */
+.history-section {
+  position: relative;
+  padding-top: 20px;
+}
+
+.history-section::before {
+  content: "Your culinary journey";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 15px;
+  color: #a4b0be;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.history-header-navigation {
+  display: flex;
+  justify-content: center; /* Центрируем всё */
+  align-items: center;
+  gap: 20px; /* Отступ между стрелками и текстом */
+  margin: 40px 0 20px;
+}
+
+.history-header-navigation h2 {
+  margin: 0; /* Убираем дефолтные отступы h2 для выравнивания */
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+/* На мобилках можно сделать стрелки чуть меньше */
+@media (max-width: 768px) {
+  .history-header-navigation {
+    gap: 10px;
+  }
+  .history-header-navigation h2 {
+    font-size: 1.2rem;
+  }
 }
