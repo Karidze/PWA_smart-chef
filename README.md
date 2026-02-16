@@ -14,7 +14,6 @@
 ### 1. Installability (Manifest)
 The application includes a comprehensive web manifest (configured in `vite.config.js`). It defines:
 - **Icons:** Custom 192x192 and 512x512 icons for high-resolution displays.
-- **Theme Color:** Deep Red (#ff4757) to match the UI.
 - **Display:** `standalone` mode to provide a full-screen app experience without browser UI.
 
 ### 2. Native Capabilities
@@ -43,4 +42,4 @@ The app consists of 4 logically connected views:
 
 1. **Clone the repository:**
    ```bash
-   git clone [your-repository-link]
+   git clone "https://github.com/Karidze/PWA_smart-chef"
