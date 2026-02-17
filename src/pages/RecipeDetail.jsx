@@ -17,7 +17,6 @@ const RecipeDetail = () => {
 
   // Метод для перехода на главную с поиском ингредиента
   const handleIngredientClick = (name) => {
-    // Переходим на корень (SmartChef) и добавляем query-параметр
     navigate(`/?search=${name.toLowerCase()}`);
   };
 

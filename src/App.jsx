@@ -1,3 +1,5 @@
+//App.jsx
+
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SmartChef from './pages/SmartChef';
@@ -25,7 +27,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* Уведомление об офлайн-режиме согласно требованиям PWA */}
+        {/* Уведомление об офлайн-режиме */}
         {isOffline && (
           <div className="offline-banner">
             <span className="offline-icon">🌐</span>

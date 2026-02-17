@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react' // Исправленный импорт
+import react from '@vitejs/plugin-react' 
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
@@ -13,23 +13,47 @@ export default defineConfig({
         name: 'SmartChef: AI Recipe Finder',
         short_name: 'SmartChef',
         description: 'Cook with what’s in your fridge!',
-        theme_color: '#ff4757', // Цвет шапки (твой основной красный)
-        background_color: '#ffffff', // Цвет сплэш-скрина при запуске
+        theme_color: '#ff4757', 
+        background_color: '#ffffff', 
         start_url: '/',
         display: 'standalone',
-        orientation: 'portrait', // Фиксируем ориентацию для удобства
+        orientation: 'portrait', 
         categories: ['food', 'lifestyle'],
         icons: [
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
-            purpose: 'any maskable' // Позволяет иконке адаптироваться под форму кнопок в Android
+            purpose: 'any' 
+          },
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable' 
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any'
+          }
+        ],
+
+        screenshots: [
+          {
+            src: 'screenshot-mobile.jpg', 
+            sizes: '1080x1920',
+            type: 'image/png',
+            form_factor: 'narrow',
+            label: 'SmartChef Home Screen'
+          },
+          {
+            src: 'screenshot-desktop.png',
+            sizes: '1920x1080',
+            type: 'image/png',
+            form_factor: 'wide',
+            label: 'SmartChef Desktop View'
           }
         ]
       }
