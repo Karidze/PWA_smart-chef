@@ -76,7 +76,6 @@ const AllRecipes = () => {
 
               <div className="card-info">
                 <span className="time-tag">⏱ {r.prepTime}</span>
-                {/* Кол-во айтемов удалили отсюда */}
               </div>
             </div>
           </Link>

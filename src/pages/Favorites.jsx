@@ -31,7 +31,6 @@ const Favorites = () => {
                 <span className="category-tag">{r.category}</span>
                 <h3>{r.title}</h3>
                 
-                {/* Добавили блок ингредиентов как на странице All Recipes */}
                 <div className="card-ingredients-preview">
                   {r.ingredients.slice(0, 3).map((ing, index) => (
                     <span key={index} className="mini-ing-text">

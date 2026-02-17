@@ -1,4 +1,3 @@
-/* Глобальный сброс */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +17,6 @@ body {
   background-color: #f8f9fa;
   color: #2f3542;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  /* УБРАЛИ place-items: center и display: flex */
 }
 
 /* Ссылкам убираем подчеркивание по умолчанию */

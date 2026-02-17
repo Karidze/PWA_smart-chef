@@ -129,7 +129,6 @@ const SmartChef = () => {
                   <h3>{r.title}</h3>
                   <p>⏱ {r.prepTime} • {r.category}</p>
                 </div>
-                {/* Убрали match-badge отсюда */}
               </Link>
             ))}
           </div>

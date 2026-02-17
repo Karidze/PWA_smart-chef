@@ -17,7 +17,7 @@
 
 /* Стилизация карточки избранного */
 .favorite-card {
-  border-left: 4px solid #ffcc00; /* Золотистая полоска слева */
+  border-left: 4px solid #ffcc00; 
   background: white;
   transition: all 0.3s ease;
 }
