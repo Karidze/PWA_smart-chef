@@ -11,7 +11,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
         id: '/', 
-        name: 'SmartChef: AI Recipe Finder',
+        name: 'SmartChef: Recipe Finder',
         short_name: 'SmartChef',
         description: 'Cook with what’s in your fridge!',
         theme_color: '#ff4757', 
@@ -43,14 +43,14 @@ export default defineConfig({
         screenshots: [
           {
             src: 'screenshot-mobile.jpg', 
-            sizes: '623x1280',
+            sizes: '1080x1920',
             type: 'image/jpeg', 
             form_factor: 'narrow',
             label: 'SmartChef Home Screen'
           },
           {
             src: 'screenshot-desktop.png',
-            sizes: '1786x949', 
+            sizes: '1920x1080', 
             type: 'image/png',
             form_factor: 'wide',
             label: 'SmartChef Desktop View'
